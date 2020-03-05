@@ -1,0 +1,21 @@
+<driconf>
+    <device screen="0" driver="dri2">
+        <application name="Default">
+            <option name="vblank_mode" value="0" />
+        </application>
+    </device>
+    <device screen="0" driver="i965">
+        <application name="Default">
+              <option name="force_s3tc_enable" value="true" />
+              <option name="no_rast" value="false" />
+              <option name="always_flush_cache" value="false" />
+              <option name="stub_occlusion_query" value="false" />
+              <option name="always_flush_batch" value="false" />
+              <option name="bo_reuse" value="1" />
+              <option name="texture_tiling" value="true" />
+              <option name="early_z" value="false" />
+              <option name="allow_large_textures" value="2" />
+              <option name="fragment_shader" value="false" />
+        </application>
+      </device>
+</driconf>

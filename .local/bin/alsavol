@@ -1,0 +1,61 @@
+#!/bin/sh
+
+reload() {
+	CURVOL=$(amixer -M get Master | awk '/Mono.+/ {print $6=="[off]"?$6:$4}' | tr -d '[]')
+}
+
+function listen {
+    firstrun=0
+
+    alsactl monitor 2>/dev/null | {
+        while true; do
+            {
+                # If this is the first time just continue
+                # and print the current state
+                # Otherwise wait for events
+                # This is to prevent the module being empty until
+                # an event occurs
+                if [ $firstrun -eq 0 ]
+                then
+                    firstrun=1
+                else
+                    read -r event || break
+                    if ! echo "$event" | grep -e "on card" -e "on sink"
+                    then
+                        # Avoid double events
+                        continue
+                    fi
+                fi
+            } &>/dev/null
+            output
+        done
+    }
+}
+
+function output() {
+	reload
+	if [ "${CURVOL}" = "off" ]
+	then
+		echo " Mute"
+	else
+		echo " $CURVOL"
+	fi
+}
+
+case $1 in
+	up)
+		amixer -q -M set Master 5%+
+		;;
+	down)
+		amixer -q -M set Master 5%-
+		;;
+	tgle)
+		amixer -q set Master toggle
+		;;
+	listn)
+		listen
+		;;
+	*)
+		output
+		;;
+esac

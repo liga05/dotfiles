@@ -1,0 +1,36 @@
+#!/bin/sh
+# Give a battery name (e.g. BAT0) as an argument.
+
+capacity=$(cat /sys/class/power_supply/BAT0/capacity) || exit
+status=$(cat /sys/class/power_supply/BAT0/status)
+
+case $status in
+ Discharging)
+   if [ "$capacity" -ge 91 ]; then
+	echo "  $capacity%"
+   elif [ "$capacity" -ge 66 ]; then
+	echo "  $capacity%"
+   elif [ "$capacity" -ge 46 ]; then
+	echo "  $capacity%"
+   elif [ "$capacity" -ge 21 ]; then
+	echo "  $capacity%"
+   elif [ "$capacity" -le 20 ]; then
+	echo "  $capacity%" && prompt "battery low! suspend computer?" "sudo zzz"
+   elif [ "$capacity" -le 17 ]; then
+	echo "  $capacity%" && sudo zzz
+   fi ;;
+ Charging)
+   if [ "$capacity" -ge 91 ]; then
+	echo "  $capacity%"
+   elif [ "$capacity" -ge 66 ]; then
+	echo "  $capacity%"
+   elif [ "$capacity" -ge 46 ]; then
+	echo "  $capacity%"
+   elif [ "$capacity" -ge 21 ]; then
+	echo "  $capacity%"
+   else
+	echo "  $capacity%"
+   fi ;;
+ *)
+   echo "  $capacity%"
+esac
