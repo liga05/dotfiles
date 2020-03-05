@@ -14,7 +14,7 @@ case $status in
 	echo "  $capacity%"
    elif [ "$capacity" -ge 21 ]; then
 	echo "  $capacity%"
-   elif [ "$capacity" -le 20 ]; then
+   elif [ "$capacity" -ge 18 ]; then
 	echo "  $capacity%" && prompt "battery low! suspend computer?" "sudo zzz"
    elif [ "$capacity" -le 17 ]; then
 	echo "  $capacity%" && sudo zzz
