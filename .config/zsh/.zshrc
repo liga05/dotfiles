@@ -5,8 +5,8 @@ compinit
 # Include hidden files in autocomplete:
 _comp_option+=(globdots)
 
-HISTSIZE=2222
-SAVEHIST=1111
+HISTSIZE=1010
+SAVEHIST=1010
 HISTFILE=~/.cache/histfile/zsh_history
 
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
