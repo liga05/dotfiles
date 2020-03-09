@@ -1,5 +1,4 @@
-st.font: mononoki Nerd Font Mono-11;
-!st.font: Inconsolata for Powerline-11.3;
+!st.font: mononoki Nerd Font Mono-11;
 !st.fontalt0: Hack Nerd Font-11;
 st.borderpx: 0
 st.background: #000000
