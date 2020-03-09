@@ -1,4 +1,4 @@
-!st.font: mononoki Nerd Font Mono-11;
+st.font: mononoki-11;
 !st.fontalt0: Hack Nerd Font-11;
 st.borderpx: 0
 st.background: #000000
