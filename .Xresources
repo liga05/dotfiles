@@ -1,7 +1,7 @@
-st.font: mononoki-11;
-!st.fontalt0: Hack Nerd Font-11;
+st.font: mononoki Nerd Font-10.8;
+!st.fontalt0: NotoEmoji Nerd Font Mono-8.8;
 st.borderpx: 0
 st.background: #000000
 st.foreground: white
-st.alpha: 0.88
+st.alpha: 0.80
 !st.termname: st-256color

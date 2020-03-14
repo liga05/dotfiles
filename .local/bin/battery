@@ -7,30 +7,30 @@ status=$(cat /sys/class/power_supply/BAT0/status)
 case $status in
  Discharging)
    if [ "$capacity" -ge 91 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    elif [ "$capacity" -ge 66 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    elif [ "$capacity" -ge 46 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    elif [ "$capacity" -ge 21 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    elif [ "$capacity" -ge 18 ]; then
-	echo "  $capacity%" && prompt "battery low! suspend computer?" "sudo zzz"
+	echo " $capacity%" && prompt "battery low! suspend computer?" "sudo zzz"
    elif [ "$capacity" -le 17 ]; then
-	echo "  $capacity%" && sudo zzz
+	echo " $capacity%" && sudo zzz
    fi ;;
  Charging)
    if [ "$capacity" -ge 91 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    elif [ "$capacity" -ge 66 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    elif [ "$capacity" -ge 46 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    elif [ "$capacity" -ge 21 ]; then
-	echo "  $capacity%"
+	echo " $capacity%"
    else
-	echo "  $capacity%"
+	echo " $capacity%"
    fi ;;
  *)
-   echo "  $capacity%"
+   echo " $capacity%"
 esac

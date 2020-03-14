@@ -3,7 +3,7 @@
 xwallpaper --stretch .config/wall.jpg &
 xrdb ~/.Xresources &
 
-bspc monitor eDP-1 -d I II III
+bspc monitor eDP1 -d I II III
 
 bspc config border_width		2
 bspc config window_gap			3

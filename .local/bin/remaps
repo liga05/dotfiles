@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xset r rate 340 50
+setxkbmap -option caps:escape_shifted_capslock
+setxkbmap -option altwin:menu_win

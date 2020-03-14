@@ -20,16 +20,16 @@ function parse_git_dirty() {
     if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
       FLAGS+='--untracked-files=no'
     fi
-    case "$GIT_STATUS_IGNORE_SUBMODULES" in
-      git)
-        # let git decide (this respects per-repo config in .gitmodules)
-        ;;
-      *)
-        # if unset: ignore dirty submodules
-        # other values are passed to --ignore-submodules
-        FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"
-        ;;
-    esac
+#   case "$GIT_STATUS_IGNORE_SUBMODULES" in
+#     git)
+#       # let git decide (this respects per-repo config in .gitmodules)
+#       ;;
+#     *)
+#       # if unset: ignore dirty submodules
+#       # other values are passed to --ignore-submodules
+#       FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"
+#       ;;
+#   esac
     STATUS=$(command git status ${FLAGS} 2> /dev/null | tail -n1)
   if [[ -n $STATUS ]]; then
     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
@@ -42,7 +42,7 @@ autoload -U colors && colors
 setopt prompt_subst
 
 PROMPT=' %{$fg_bold[blue]%}%c $(git_prompt_info)'
-PROMPT+='%(?:%{$fg_bold[green]%}❯%{$reset_color%} :%{$fg_bold[red]%}❯%{$reset_color%} )'
+PROMPT+='%(?:%{$fg_bold[green]%}}%{$reset_color%} :%{$fg_bold[red]%}}%{$reset_color%} )'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[yellow]%}git:[%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}"

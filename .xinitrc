@@ -2,7 +2,7 @@
 
 sxhkd &
 yabar &
-hsetroot -solid "#000000"
+hsetroot -solid "#000000" &
 (sleep 1 && xcompmgr) &
-xset r rate 340 50 &
+remaps &
 exec bspwm

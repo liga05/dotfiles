@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 val=$(cat /sys/class/backlight/intel_backlight/brightness)
 path='/sys/class/backlight/intel_backlight/brightness'
@@ -7,7 +7,7 @@ max=$((450 - int))
 up=$(( val + int ))
 down=$(( val - int ))
 
-function bUp {
+bUp() {
 
 	if [ "$val" -le 450 ] && [ "$val" -ge "$max" ]
 	then
@@ -18,7 +18,7 @@ function bUp {
 	fi
 }
 
-function bDown {
+bDown() {
     echo "$down" > "$path"
 }
 
