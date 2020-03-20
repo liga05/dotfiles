@@ -1,6 +1,6 @@
 #! /bin/sh
 
-xwallpaper --stretch .config/wall.jpg &
+yabar &
 xrdb ~/.Xresources &
 
 bspc monitor eDP1 -d I II III

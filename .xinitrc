@@ -1,8 +1,7 @@
 #!/bin/sh
 
-sxhkd &
-yabar &
-hsetroot -solid "#000000" &
+hsetroot -fill ~/.config/wall.jpg &
 (sleep 1 && xcompmgr) &
+sxhkd &
 remaps &
 exec bspwm

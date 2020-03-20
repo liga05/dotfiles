@@ -1,38 +1,27 @@
-#!/bin/zsh
+#!/bin/sh
 
 reload() {
 	CURVOL=$(amixer -M get Master | awk '/Mono.+/ {print $6=="[off]"?$6:$4}' | tr -d '[]')
 }
 
-evnt() {
-	alsactl monitor > "$HOME/.local/share/evnt"
-}
-
 listen() {
     firstrun=0
 
-    evnt | {
+    stdbuf -oL alsactl monitor | {
         while true; do
             {
-                # If this is the first time just continue
-                # and print the current state
-                # Otherwise wait for events
-                # This is to prevent the module being empty until
-                # an event occurs
                 if [ $firstrun -eq 0 ]
                 then
                     firstrun=1
                 else
-		    break
-                    if ! grep -e "Playback" -e "node" "$HOME/.local/share/evnt"
+                    read -r event || break
+                    if ! echo "$event" | grep -e "Playback"
                     then
-                        # Avoid double events
-			continue
+                        continue
                     fi
                 fi
-            } &>/dev/null
-    	    output
-            #echo "" > "$HOME/.local/share/evnt"
+            } >/dev/null
+            output
         done
     }
 }
