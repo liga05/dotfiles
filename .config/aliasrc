@@ -28,7 +28,7 @@ alias \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
-	axl="axel -n 10" \
+	ax="aria2c -x 10 -s 10 --summary-interval=0" \
 	mpa="mpv --no-audio-display"
 
 # Git

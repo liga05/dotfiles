@@ -11,5 +11,5 @@ HISTFILE=~/.cache/histfile/zsh_history
 
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-source $ZDOTDIR/zsh-config.sh 2>/dev/null
+source $ZDOTDIR/zsh-config.zsh 2>/dev/null
 #source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
