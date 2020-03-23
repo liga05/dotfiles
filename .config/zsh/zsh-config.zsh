@@ -1,8 +1,8 @@
 # Outputs current branch info in prompt format
 git_prompt_info() {
   local ref
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || return # or \ if below is uncomment
+    #ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
     print "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
@@ -10,6 +10,7 @@ git_prompt_info() {
 parse_git_dirty() {
   local STATUS
   local -a FLAGS
+  DISABLE_UNTRACKED_FILES_DIRTY=false
   FLAGS=(--porcelain)
     if [ "$DISABLE_UNTRACKED_FILES_DIRTY" = "true" ]; then
       FLAGS+=(--untracked-files=no)
@@ -34,27 +35,27 @@ parse_git_dirty() {
 
 # Execution time start
 xtime_preexec() {
-  EXEC_TIME_start=$(date +%s)
+  xTIME_start=$(date +%s)
 }
 
 # Execution time end
 xtime_precmd() { 
-  [ -n "$EXEC_TIME_duration" ] && unset EXEC_TIME_duration
-  [ -z "$EXEC_TIME_start" ] && return
-  local EXEC_TIME_stop=$(date +%s)
-  EXEC_TIME_duration=$((EXEC_TIME_stop - EXEC_TIME_start))
-  unset EXEC_TIME_start
+  [ -n "$xTIME_duration" ] && unset xTIME_duration
+  [ -z "$xTIME_start" ] && return
+  local xTIME_stop=$(date +%s)
+  xTIME_duration=$((xTIME_stop - xTIME_start))
+  unset xTIME_start
 }
 
 xtime() {
-  [ "$EXEC_TIME_duration" -lt 2 ] && return
-    XTIME_H=$((EXEC_TIME_duration / 3600))
-    XTIME_M=$((EXEC_TIME_duration % 3600 / 60))
-    XTIME_S=$((EXEC_TIME_duration % 60))
+  [ "$xTIME_duration" -lt 2 ] && return
+    xTIME_H=$((xTIME_duration / 3600))
+    xTIME_M=$((xTIME_duration % 3600 / 60))
+    xTIME_S=$((xTIME_duration % 60))
     printf '%%F{259}took %%F{yellow}'
-    [ "$XTIME_H" -gt 0 ] && printf '%dh ' $XTIME_H 
-    [ "$XTIME_M" -gt 0 ] && printf '%dm ' $XTIME_M
-    [ "$XTIME_S" -gt 0 ] && printf '%ds ' $XTIME_S
+    [ "$xTIME_H" -gt 0 ] && printf '%dh ' $xTIME_H 
+    [ "$xTIME_M" -gt 0 ] && printf '%dm ' $xTIME_M
+    [ "$xTIME_S" -gt 0 ] && printf '%ds ' $xTIME_S
 }
 
 autoload -U add-zsh-hook

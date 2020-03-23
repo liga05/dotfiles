@@ -29,5 +29,9 @@ set clipboard+=unnamedplus
 	set number relativenumber
 " Enable autocompletion:
 	set wildmode=longest,list,full
-" Open corresponding .pdf/.html or preview
-	map <leader>p :!opout <c-r>%<CR><CR>
+
+" Check file in shellcheck:
+"	map <leader>s :!clear && shellcheck %<CR>
+
+" Run xrdb whenever Xdefaults or Xresources are updated.
+	autocmd BufWritePost *Xresources !xrdb %
