@@ -4,12 +4,12 @@
 
 inc='4'
 maxvol='100'
-active_sink=""
+active_sink='0'
 maxlimit=$((maxvol - inc))
 
-reloadSink() {
-    active_sink=$(pacmd list-sinks | awk '/* index:/{print $3}')
-}
+#reloadSink() {
+#    active_sink=$(pacmd list-sinks | awk '/* index:/{print $3}')
+#}
 
 volUp() {
     getCurVol
@@ -34,11 +34,9 @@ volMute() {
     case "$1" in
         mute)
             pactl set-sink-mute "$active_sink" 1
-            curVol=0
             ;;
         unmute)
             pactl set-sink-mute "$active_sink" 0
-            getCurVol
             ;;
     esac
 }
@@ -78,18 +76,19 @@ listen() {
 }
 
 output() {
-    reloadSink
     getCurVol
     volMuteStatus
-    if [ "${curStatus}" = 'yes' ]
+    if [ "$curStatus" = 'yes' ]
     then
-        echo " $curVol%"
+        echo "  ---"
+    elif [ "$curVol" = 0 ]
+    then
+        echo "  $curVol%"
     else
-        echo " $curVol%"
+        echo "  $curVol%"
     fi
 }
 
-reloadSink
 case "$1" in
     -up)
         volUp

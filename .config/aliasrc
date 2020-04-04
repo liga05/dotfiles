@@ -25,10 +25,9 @@ alias \
 	sdn="sudo shutdown -h now" \
 	f="$FILE" \
 	e="$EDITOR" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
-	ax="aria2c -x 10 -s 10 --summary-interval=0" \
+	pi="sudo pacman -S" \
+	pr="sudo pacman -Rns" \
+	ps="pacman -Ss" \
 	mpa="mpv --no-audio-display"
 
 # Git

@@ -3,7 +3,7 @@ XF86ScreenSaver
 	xset dpms force off
 
 XF86MonBrightness{Up,Down}
-	bright {-up,-down}
+	bright.c {-u,-d}
 
 XF86AudioMute
 	pavolume -togmute
@@ -20,8 +20,8 @@ XF86WWW
 XF86Mail
 	prompt "disconnect wifi?" "xwifi"
 
-XF86Sleep
-	prompt "Sleep computer?" "sudo zzz"
+#XF86Sleep
+#	prompt "Sleep computer?" "sudo zzz"
 
 ###
 # wm independent hotkeys

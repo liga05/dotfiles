@@ -1,7 +1,3 @@
 #!/bin/sh
 
-currentNetworkName=$(nmcli -t -f NAME connection show --active)
-
-
-nmcli con down id "$currentNetworkName"
-
+currentNetworkName=$(nmcli -t -f NAME connection show --active) && nmcli con down id "$currentNetworkName"

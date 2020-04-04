@@ -9,7 +9,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 "Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
-"Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "set bg=dark
