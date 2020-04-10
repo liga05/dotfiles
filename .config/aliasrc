@@ -6,7 +6,7 @@ alias vis="sudo nvim"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	bat="cat /sys/class/power_supply/BAT?/capacity" \
+	btr="cat /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -v" \
@@ -28,7 +28,7 @@ alias \
 	pi="sudo pacman -S" \
 	pr="sudo pacman -Rns" \
 	ps="pacman -Ss" \
-	mpa="mpv --no-audio-display"
+	mpa="mpv --no-vid"
 
 # Git
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
