@@ -6,21 +6,21 @@ main(int argc, char *argv[]) {
     int val;
 
     br = fopen("/sys/class/backlight/intel_backlight/brightness", "w+");
-    fscanf(br, "%i", &val);
+    fscanf(br, "%d", &val);
     
     size_t opt;
     for(opt = 1; opt < argc && argv[opt][0] == '-'; opt++) {
 	    switch(argv[opt][1]) {
 		case 'u':
 			if((val <= 450) && (val >= 405)) {
-				fprintf(br, "%i", 450);}
+				fprintf(br, "%d", 450);}
 			else if(val <= 405) {
-				fprintf(br, "%i", val += 45);}
+				fprintf(br, "%d", val += 45);}
 			break;
 		case 'd':
-			fprintf(br, "%i", val -= 45);
+			fprintf(br, "%d", val -= 45);
 			break;
-		default : printf("Usage: bright [-u/-d]");}
+		default : puts("Usage: bright [-u/-d]");}
     }
     fclose(br);
 }

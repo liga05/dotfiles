@@ -6,12 +6,13 @@ alias vis="sudo nvim"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	btr="cat /sys/class/power_supply/BAT?/capacity" \
+	btr="ccat.c /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
-	ffmpeg="ffmpeg -hide_banner"
+	ffmpeg="ffmpeg -hide_banner" \
+	cat="ccat.c"
 
 # Colorize commands when possible.
 alias \
