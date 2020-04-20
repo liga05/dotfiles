@@ -1,27 +1,31 @@
 #!/usr/local/bin/tcc -run
 #include <stdio.h>
-#include <stdlib.h>
+extern int chdir(const char *__path) __THROW __nonnull((1)) __wur;
+extern int execvp(const char *__file, char *const __argv[]) __THROW __nonnull((1, 2));
 
 main() {
-	char cmds[100];
-	char cmd[] = "mpv --no-vid --display-tags=no";
+	char *cmd = "mpv";
+	char *argv[5];
+	argv[0] = cmd;
+	argv[1] = "--no-vid";
+	argv[2] = "--display-tags=no";
 	int play;
 
-	while(1) {
+	chdir("/home/agil");
 	puts("\t1.Indonesian\n\t2.Not_ID\n\t3.Play all\n\t4.Quit");
 	printf(" Please Choose Playlist : ");
-	scanf("%i", &play);
+	scanf("%d", &play);
 	switch(play) {
-		case 1: sprintf(cmds, "%s ~/Music/Indonesian", cmd);
+		case 1: argv[3] = "Music/Indonesian";
 			break;
-		case 2: sprintf(cmds, "%s ~/Music/Not_ID", cmd);
+		case 2: argv[3] = "Music/Not_ID";
 			break;
-		case 3: sprintf(cmds, "%s ~/Music", cmd);
+		case 3: argv[3] = "Music";
 			break;
 		case 4: return 0;
 		default:puts("no match found"); 
 			return 1;
 	 }
-	system(cmds);
-	}
+	argv[4] = NULL;
+	execvp(cmd, argv);
 }

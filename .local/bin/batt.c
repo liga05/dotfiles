@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcc -run
 #include <stdio.h>
-#include <stdlib.h>
+extern int system(const char *__command) __wur;
 
 main() {
    FILE *st, *ca;
@@ -17,9 +17,9 @@ main() {
 	   else if(cap >= 46) { printf("   %d%\n", cap);}
 	   else if(cap >= 21) { printf("   %d%\n", cap);}
 	   else if(cap >= 19) { printf("   %d%\n", cap);
-	   			system("prompt \"battery low! suspend computer?\" \"sudo zzz\"");}
+	   			system("prompt batt");}
 	   else { printf("   %d%\n", cap);
-	   	  system("sudo zzz >/dev/null");}
+	   	  system("prompt sleep");}
    }
    else if(sts == 0x43) {
 	   printf("   %d%\n", cap);}

@@ -1,8 +1,13 @@
 #!/bin/sh
 
-# A dmenu binary prompt script.
-# Gives a dmenu prompt labeled with $1 to perform command $2.
 # For example:
 # `./prompt "Do you want to shutdown?" "shutdown -h now"`
 
-[ "$(printf "No\\nYes" | dmenu -i -p "$1" -nb darkred -sb red -sf white -nf gray )" = "Yes" ] && $2
+case "$1" in
+	batt)
+		[ "$(printf "No\\nYes" | dmenu -i -p "battery low! suspend computer?" -nb darkred -sb red -sf white -nf gray )" = "Yes" ] && sudo zzz >/dev/null ;;
+	sleep)
+		sudo zzz >/dev/null ;;
+	*)
+		[ "$(printf "No\\nYes" | dmenu -i -p "$1" -nb darkred -sb red -sf white -nf gray )" = "Yes" ] && $2 ;;
+esac

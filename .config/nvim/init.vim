@@ -1,4 +1,4 @@
-let mapleader =","
+let mapleader ="`"
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	silent !mkdir -p ~/.config/nvim/autoload/
@@ -8,9 +8,12 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'sheerun/vim-polyglot'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 "set bg=dark
+colo dracula
+let g:dracula_colorterm = 0
 set go=a
 set mouse=a
 set nohlsearch

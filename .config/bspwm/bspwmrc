@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 yabar &
 xrdb ~/.Xresources &
@@ -31,9 +31,9 @@ bspc config presel_feedback_color	"#5e81ac"
 bspc config urgent_border_color		"#dd2727"
 
 xsetroot -cursor_name left_ptr
-xset s 240 240
+xset s 360 360
 
 bspc rule -a firefox desktop='^2'
 bspc rule -a mpv state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off
